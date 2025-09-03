@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import { celebrationThemes } from "@/lib/celebrations";
 
 interface CelebrationSelectorProps {
   onSelect: (type: string) => void;

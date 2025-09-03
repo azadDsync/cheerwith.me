@@ -141,9 +141,9 @@ export default function ContentProtection() {
     images.forEach(img => {
       img.addEventListener('dragstart', disableDragDrop);
       img.style.userSelect = 'none';
-      (img.style as any).webkitUserSelect = 'none';
+      (img.style as CSSStyleDeclaration & { webkitUserSelect?: string }).webkitUserSelect = 'none';
       img.style.pointerEvents = 'none';
-      (img.style as any).webkitTouchCallout = 'none';
+      (img.style as CSSStyleDeclaration & { webkitTouchCallout?: string }).webkitTouchCallout = 'none';
     });
 
     // Apply CSS to prevent selection and dragging

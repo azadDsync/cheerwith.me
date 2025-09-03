@@ -7,7 +7,7 @@ export default function LandingPage() {
   const [get, set] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [assetsLoaded, setAssetsLoaded] = useState(false);
-  const [selectedCelebration, setSelectedCelebration] = useState<string | null>(null);
+  const [selectedCelebration] = useState<string | null>(null);
   const currentCelebration = selectedCelebration || detectCelebrationType();
   const config = celebrationThemes[currentCelebration];
   

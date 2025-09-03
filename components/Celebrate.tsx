@@ -46,8 +46,8 @@ export default function Celebrate({ type, customConfig }: CelebrateProps) {
         img.setAttribute('oncontextmenu', 'return false;');
         img.style.userSelect = 'none';
         img.style.pointerEvents = 'none';
-        (img.style as any).webkitUserDrag = 'none';
-        (img.style as any).webkitTouchCallout = 'none';
+        (img.style as CSSStyleDeclaration & { webkitUserDrag?: string }).webkitUserDrag = 'none';
+        (img.style as CSSStyleDeclaration & { webkitTouchCallout?: string }).webkitTouchCallout = 'none';
       });
     };
 
