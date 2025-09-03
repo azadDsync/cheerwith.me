@@ -1,5 +1,26 @@
 @import "tailwindcss";
 
+/* Performance optimizations */
+* {
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}
+
 /* Doodle / cartoon-style button */
 :root {
 	--doodle-bg: #fff7d6;
@@ -21,6 +42,10 @@
 	position: relative;
 	display: inline-block;
 	text-shadow: 0 1px 0 rgba(255,255,255,0.6);
+	cursor: pointer;
+	border: none;
+	outline: none;
+	will-change: transform;
 }
 
 .doodle-btn:hover {
@@ -33,6 +58,11 @@
 	box-shadow: 4px 6px 0 rgba(0,0,0,0.12);
 }
 
+.doodle-btn:focus-visible {
+	outline: 2px solid #4f46e5;
+	outline-offset: 2px;
+}
+
 .doodle-btn::after {
 	content: '✦';
 	position: absolute;
@@ -43,4 +73,9 @@
 	transform: rotate(-20deg);
 	opacity: 0.85;
 	pointer-events: none;
+}
+
+/* Image performance optimizations */
+img {
+	content-visibility: auto;
 }

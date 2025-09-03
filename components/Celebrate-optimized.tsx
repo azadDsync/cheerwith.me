@@ -2,29 +2,12 @@ import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import Confetti from "react-confetti";
 import GifPressOverlay from "./GifPressOverlay";
-import { celebrationThemes, detectCelebrationType, type CelebrationConfig } from "@/lib/celebrations";
 
-interface CelebrateProps {
-  type?: string;
-  customConfig?: Partial<CelebrationConfig>;
-}
-
-export default function Celebrate({ type, customConfig }: CelebrateProps) {
+export default function Celebrate() {
   const [windowDimension, setWindowDimension] = useState({
     width: 0,
     height: 0,
   });
-
-  const celebrationType = type || detectCelebrationType();
-  const config = {
-    ...celebrationThemes[celebrationType],
-    ...customConfig
-  };
-
-  const confettiColors = config.colors || [
-    "#FFD700", "#FF6B6B", "#4ECDC4", "#45B7D1", 
-    "#96CEB4", "#FFEAA7", "#DDA0DD", "#98D8C8"
-  ];
 
   useEffect(() => {
     const detectSize = () => {
@@ -54,7 +37,16 @@ export default function Celebrate({ type, customConfig }: CelebrateProps) {
         recycle={false}
         numberOfPieces={500}
         gravity={0.1}
-        colors={confettiColors}
+        colors={[
+          "#FFD700",
+          "#FF6B6B",
+          "#4ECDC4",
+          "#45B7D1",
+          "#96CEB4",
+          "#FFEAA7",
+          "#DDA0DD",
+          "#98D8C8",
+        ]}
       />
       
       {/* Decorative Elements */}
@@ -154,18 +146,13 @@ export default function Celebrate({ type, customConfig }: CelebrateProps) {
         </div>
         <header>
           <h1 className="text-center">
-            <span className="block">{config.title[0]}</span>
-            <span className="block">{config.title[1]}</span>
+            <span className="block">HAPPY TEACHERS</span>
+            <span className="block">DAY</span>
           </h1>
-          {/* {config.subtitle && (
-            <p className="text-lg sm:text-2xl md:text-3xl font-normal mt-4 opacity-90">
-              {config.subtitle}
-            </p>
-          )} */}
         </header>
       </article>
       
-      <section className="flex flex-col items-center justify-center" aria-labelledby="celebration-tribute">
+      <section className="flex flex-col items-center justify-center" aria-labelledby="teacher-tribute">
         <div className="pl-5 sm:pl-40">
           <Image
             src="/svgs/sir.svg"
@@ -178,7 +165,7 @@ export default function Celebrate({ type, customConfig }: CelebrateProps) {
         </div>
         <Image
           src="/svgs/navoday.svg"
-          alt="School celebration - Navodaya spirit"
+          alt="Navodaya school logo"
           width={300}
           height={300}
           className="sm:w-[400px] sm:h-[150px]"
@@ -188,12 +175,7 @@ export default function Celebrate({ type, customConfig }: CelebrateProps) {
 
       <footer className="pt-7">
         <blockquote className="text-center text-white text-lg sm:text-2xl md:text-4xl font-bold mx-auto">
-          <p>&quot;{config.message}&quot;</p>
-          {config.cite && (
-            <cite className="block text-sm sm:text-lg font-normal mt-2 opacity-75">
-              - {config.cite}
-            </cite>
-          )}
+          <p>&quot;You made learning an art—thank you for nurturing creativity in us.&quot;</p>
         </blockquote>
       </footer>
     </GifPressOverlay>

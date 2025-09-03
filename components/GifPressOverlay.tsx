@@ -69,16 +69,19 @@ export default function GifPressOverlay({
         tabIndex={0}
         onPointerDown={start}
         onMouseDown={start}
-    onTouchStart={start as unknown as React.TouchEventHandler}
+        onTouchStart={start as unknown as React.TouchEventHandler}
         onKeyDown={onKeyDown}
         aria-pressed={active}
+        aria-label="Press and hold to view celebration animation"
       >
         {children}
       </div>
       {active && (
         <div
           className={`fixed inset-0 z-[9999] flex items-center justify-center ${overlayBgClassName}`}
-          aria-live="off"
+          aria-live="polite"
+          role="dialog"
+          aria-label="Celebration animation overlay"
         >
           <Image
             src={gifSrc}
@@ -87,6 +90,7 @@ export default function GifPressOverlay({
             priority
             unoptimized
             style={{ objectFit: "contain" }}
+            sizes="100vw"
           />
           <span className="absolute bottom-4 text-white text-sm opacity-70 select-none pointer-events-none">
             Release to close · Esc

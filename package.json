@@ -6,7 +6,11 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "analyze": "ANALYZE=true npm run build",
+    "lighthouse": "npx lighthouse http://localhost:3000 --output=html --output-path=./lighthouse-report.html",
+    "check-bundle": "npx @next/bundle-analyzer",
+    "test-seo": "npx sitemap-generator-cli https://cheerwith.me"
   },
   "dependencies": {
     "next": "15.5.2",

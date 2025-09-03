@@ -1,0 +1,32 @@
+{
+  "name": "Cheer With Me - Digital Greenboard Celebrations",
+  "short_name": "CheerWithMe",
+  "description": "Digital greenboard celebration platform for birthdays, festivals, achievements, and special moments - just like school days!",
+  "start_url": "/",
+  "display": "fullscreen",
+  "orientation": "portrait",
+  "theme_color": "#084D4B",
+  "background_color": "#084D4B",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "categories": ["education", "entertainment", "lifestyle", "social"],
+  "lang": "en",
+  "dir": "ltr"
+}

@@ -1,53 +1,48 @@
-"use client";
-import Celebrate from "@/components/Celebrate";
-import { useCallback, useState } from "react";
+import LandingPage from "@/components/LandingPage";
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "Cheer With Me - Digital Greenboard For Celebration",
+  description: "Celebrate like we did in school! Create digital greenboard celebrations for birthdays, festivals, national days, and achievements. Interactive experience with confetti, music, and heartfelt messages.",
+  openGraph: {
+    title: "Digital Greenboard Celebrations - Just Like School Days",
+    description: "Celebrate birthdays, festivals, and special moments with our interactive digital greenboard - just like the celebrations we loved in school!",
+  },
+};
 
 export default function Home() {
-  const [get, set] = useState(false);
-  const playAudio = (src: string, loop = false) =>
-    new Promise<void>((resolve, reject) => {
-      const audio = new Audio(encodeURI(src));
-      audio.volume = 0.9;
-      audio.loop = loop;
-      if (loop) {
-        audio.addEventListener("playing", () => resolve(), { once: true });
-      } else {
-        audio.addEventListener("ended", () => resolve(), { once: true });
-      }
-      audio.addEventListener("error", (e) => reject(e));
-      audio.play().catch(reject);
-    });
-
-  const handleClick = useCallback(async () => {
-    try {
-      await playAudio("/sound/Voicy_Celebration sound effect.mp3");
-
-      await playAudio("/sound/happy-teacher-day.mp3", true);
-    } catch (err) {
-      console.error("Audio play failed:", err);
-    } finally {
-      set(true);
-    }
-  }, []);
-  return (
-    <div className="bg-[#084D4B] h-screen w-screen ">
-      {get ? (
-        <Celebrate />
-      ) : (
-        <div className="h-screen w-screen flex flex-col items-center justify-center gap-4">
-          {/* <Image src="/gifs/PaperPlane.gif" height={150} width={150} alt="paper plane" /> */}
-          <h1 className="text-3xl text-white">प्रणाम सर 🙏🏻</h1>
-          <button
-            onClick={() => {
-              handleClick();
-              set(true);
-            }}
-            className="doodle-btn"
-          >
-            click it
-          </button>
-        </div>
-      )}
-    </div>
-  );
+ return(
+  <>
+    <main role="main">
+      <LandingPage/>
+    </main>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          "name": "Cheer With Me - Digital Greenboard",
+          "description": "Interactive digital celebration platform for birthdays, festivals, national days, and special occasions",
+          "applicationCategory": "Entertainment",
+          "operatingSystem": "Any",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "featureList": [
+            "Birthday celebrations",
+            "Festival wishes", 
+            "National day tributes",
+            "Teacher appreciation",
+            "Student achievements",
+            "Interactive confetti",
+            "Digital greenboard experience"
+          ]
+        })
+      }}
+    />
+  </>
+ );
 }
