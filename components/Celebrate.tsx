@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import Confetti from "react-confetti";
+import GifPressOverlay from "./GifPressOverlay";
 
 export default function Celebrate() {
   const [windowDimension, setWindowDimension] = useState({
@@ -24,14 +25,27 @@ export default function Celebrate() {
     };
   }, []);
   return (
-    <div className="h-screen relative overflow-hidden">
+    <GifPressOverlay
+      gifSrc="/gifs/doge-dance.gif"
+      alt="Celebration Art"
+      className="h-screen relative overflow-hidden cursor-pointer select-none"
+    >
       <Confetti
         width={windowDimension.width}
         height={windowDimension.height}
         recycle={false}
         numberOfPieces={500}
         gravity={0.1}
-        colors={['#FFD700', '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEAA7', '#DDA0DD', '#98D8C8']}
+        colors={[
+          "#FFD700",
+          "#FF6B6B",
+          "#4ECDC4",
+          "#45B7D1",
+          "#96CEB4",
+          "#FFEAA7",
+          "#DDA0DD",
+          "#98D8C8",
+        ]}
       />
       <div className="absolute top-0 left-0 hidden sm:block opacity-[50%] md:opacity-[100%]">
         <Image
@@ -122,7 +136,6 @@ export default function Celebrate() {
             className="sm:w-[50px]"
           />
         </div>
-
         <h1 className=" text-center">HAPPY TEACHERS </h1>
         <h1 className="text-center">DAY</h1>
       </div>
@@ -149,9 +162,9 @@ export default function Celebrate() {
         <p className="text-center text-white text-lg sm:text-2xl md:text-4xl font-bold  mx-auto ">
           {/* “We may have grown older, but the Navodaya spirit in us will always
           stay young.” */}
-          "You made learning an art—thank you for nurturing creativity in us."
+            &quot; You made learning an art—thank you for nurturing creativity in us.&quot;
         </p>
       </div>
-    </div>
+    </GifPressOverlay>
   );
 }
