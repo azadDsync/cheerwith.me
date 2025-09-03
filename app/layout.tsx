@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Cabin_Sketch } from 'next/font/google';
+import ContentProtection from '@/components/ContentProtection';
 
 const cabinSketch = Cabin_Sketch({
   weight: ['700'],  
@@ -74,6 +75,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <meta name="referrer" content="no-referrer" />
+        <meta httpEquiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+        <meta httpEquiv="Pragma" content="no-cache" />
+        <meta httpEquiv="Expires" content="0" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preload" href="/sound/happy-teacher-day.mp3" as="audio" />
@@ -102,6 +107,7 @@ export default function RootLayout({
         />
       </head>
       <body className={cabinSketch.className}>
+        <ContentProtection />
         {children}
       </body>
     </html>

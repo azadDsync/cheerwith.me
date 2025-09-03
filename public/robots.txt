@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /images/
+Disallow: /gifs/
+Disallow: /sound/
+Disallow: /svgs/
 
 Sitemap: https://cheerwith.me/sitemap.xml

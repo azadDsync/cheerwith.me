@@ -37,8 +37,27 @@ export default function Celebrate({ type, customConfig }: CelebrateProps) {
     detectSize();
     window.addEventListener("resize", detectSize);
 
+    // Additional protection for images in this component
+    const protectImages = () => {
+      const images = document.querySelectorAll('img');
+      images.forEach(img => {
+        img.setAttribute('draggable', 'false');
+        img.setAttribute('ondragstart', 'return false;');
+        img.setAttribute('oncontextmenu', 'return false;');
+        img.style.userSelect = 'none';
+        img.style.pointerEvents = 'none';
+        (img.style as any).webkitUserDrag = 'none';
+        (img.style as any).webkitTouchCallout = 'none';
+      });
+    };
+
+    // Protect images immediately and after a short delay
+    protectImages();
+    const timer = setTimeout(protectImages, 100);
+
     return () => {
       window.removeEventListener("resize", detectSize);
+      clearTimeout(timer);
     };
   }, []);
   
