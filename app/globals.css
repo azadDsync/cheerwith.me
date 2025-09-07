@@ -28,6 +28,9 @@ html {
 	--doodle-text: #0f172a;
 }
 
+
+
+
 .doodle-btn {
 	background: var(--doodle-bg);
 	color: var(--doodle-text);
@@ -138,4 +141,21 @@ button, a, input, textarea, select, [role="button"], [tabindex] {
 /* Disable outline on focus for non-interactive elements */
 *:not(button):not(a):not(input):not(textarea):not(select):not([tabindex]):focus {
 	outline: none !important;
+}
+
+.vignette {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  pointer-events: none;
+  box-shadow: 0 0 200px 80px rgba(0, 0, 0, 0.453) inset;
+  z-index: 10;
+}
+
+.element {
+  background-image: url('/svgs/bg-d.svg');
+  background-repeat: no-repeat;
+  background-size: cover; 
+  background-position: center;
+ 
 }
