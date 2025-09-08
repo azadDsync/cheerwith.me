@@ -1,65 +1,14 @@
 "use client";
 import Celebrate from "@/components/Celebrate";
-import { CelebrationConfig } from "@/lib/celebrations";
-import axios from "axios";
+import { useApiData } from "@/hooks/useApiData";
 import { useCallback, useEffect, useState } from "react";
 
 export default function LandingPage() {
-  const [get, set] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  // router not currently used
   const [assetsLoaded, setAssetsLoaded] = useState(false);
-
-  const [quote, setQuote] = useState();
-  const [greet, setGreet] = useState("Hello There,");
-  const [remoteConfig, setRemoteConfig] =
-    useState<Partial<CelebrationConfig> | null>(null);
-
-  useEffect(() => {
-    const API_URL =
-      "https://server-cheerwithme.domendra-contact.workers.dev/data";
-      // "http://localhost:8787/data";
-    let mounted = true;
-    const controller = new AbortController();
-
-
-    axios
-      .get(API_URL, { signal: controller.signal })
-      .then((res) => {
-        if (!mounted) return;
-        const payload = res?.data;
-
-      
-        const config =
-          payload && typeof payload === "object"
-            ? payload.data ?? payload
-            : null;
-
-        if (config) {
-          setRemoteConfig(config as Partial<CelebrationConfig>);
-          if (config.greet) {
-            setGreet(config.greet);
-          }
-
-          if (payload && typeof payload === "object" && "quote" in payload) {
-            setQuote(payload.quote);
-            setRemoteConfig(null);
-          }
-        } else {
-          setRemoteConfig(null);
-        }
-      })
-      .catch((err) => {
-        if (axios.isCancel(err)) return;
-        
-        console.error("Failed to fetch celebration data:", err);
-      });
-
-    return () => {
-      mounted = false;
-      controller.abort();
-    };
-  }, []);
-
+  const [isLoading, setIsLoading] = useState(false);
+  const { data } = useApiData();
+  const [get, set] = useState(false);
   const preloadAssets = useCallback(async () => {
     setIsLoading(true);
 
@@ -81,8 +30,8 @@ export default function LandingPage() {
 
     // Audio assets based on current celebration config
     const audioAssets = [
-      remoteConfig?.celebrationSound,
-      remoteConfig?.backgroundMusic,
+      data?.data?.celebrationSound,
+      data?.data?.backgroundMusic,
     ].filter(Boolean) as string[];
 
     try {
@@ -119,8 +68,7 @@ export default function LandingPage() {
       // Still allow the component to render even if some assets fail
       setAssetsLoaded(true);
     }
-  }, [remoteConfig?.celebrationSound, remoteConfig?.backgroundMusic]);
-
+  }, [data?.data?.celebrationSound, data?.data?.backgroundMusic]);
   const playAudio = useCallback(
     (src: string, loop = false) =>
       new Promise<void>((resolve, reject) => {
@@ -139,16 +87,14 @@ export default function LandingPage() {
       }),
     []
   );
-
   const handleClick = useCallback(async () => {
     if (!assetsLoaded) {
       await preloadAssets();
     }
-
     try {
       set(true);
-      const sound = remoteConfig?.celebrationSound;
-      const music = remoteConfig?.backgroundMusic;
+      const sound = data?.data?.celebrationSound;
+      const music = data?.data?.backgroundMusic;
       if (sound) {
         await playAudio(sound);
       }
@@ -158,7 +104,7 @@ export default function LandingPage() {
     } catch (err) {
       console.error("Audio play failed:", err);
     }
-  }, [playAudio, remoteConfig, assetsLoaded, preloadAssets]);
+  }, [playAudio, data?.data, assetsLoaded, preloadAssets]);
 
   // Show a human-friendly date instead of a raw timestamp, e.g. "7 Sep 2025"
   const date = new Date().toLocaleDateString("en-GB", {
@@ -169,8 +115,8 @@ export default function LandingPage() {
 
   return (
     <div className=" bg-[#084D4B]  vignette h-screen w-screen  ">
-      {get && assetsLoaded ? (
-        <Celebrate customConfig={remoteConfig ?? undefined} />
+      {data?.data && assetsLoaded ? (
+        <Celebrate customConfig={data?.data ?? undefined} />
       ) : (
         <section
           className="h-screen w-screen element flex flex-col items-center justify-center gap-4"
@@ -183,13 +129,13 @@ export default function LandingPage() {
               className="text-3xl md:text-4xl text-white text-center mb-2"
               aria-label="Pranam Sir - Welcome greeting in Hindi"
             >
-              " {quote ? quote : greet} "
+              &quot; {data?.quote ? data?.quote : data?.data.greet} &quot;
             </h1>
             {/* <p className="text-white/90 text-lg md:text-xl font-medium">
               Digital Greenboard Celebrations
             </p> */}
           </header>
-          {remoteConfig && (
+          {data?.data && (
             <button
               onClick={handleClick}
               disabled={isLoading}
@@ -224,7 +170,7 @@ export default function LandingPage() {
                   Loading Celebration...
                 </span>
               ) : (
-                "🎉 Start Celebration"
+                "🎉 Enter Class 11-B"
               )}
             </button>
           )}

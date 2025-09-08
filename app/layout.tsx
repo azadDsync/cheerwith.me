@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import ClientQueryProvider from "@/components/ClientQueryProvider";
 import { Cabin_Sketch } from 'next/font/google';
-import ContentProtection from '@/components/ContentProtection';
+
 
 const cabinSketch = Cabin_Sketch({
   weight: ['700'],  
@@ -107,8 +108,10 @@ export default function RootLayout({
         />
       </head>
       <body className={cabinSketch.className}>
-        {/* <ContentProtection /> */}
-        {children}
+        
+  {/* <ContentProtection /> */}
+  <ClientQueryProvider>{children}</ClientQueryProvider>
+        
       </body>
     </html>
   );

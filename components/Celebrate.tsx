@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import Confetti from "react-confetti";
 import GifPressOverlay from "./GifPressOverlay";
 import { type CelebrationConfig } from "@/lib/celebrations";
-import axios from "axios";
 
 interface CelebrateProps {
   type?: string;

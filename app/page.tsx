@@ -2,6 +2,7 @@ import LandingPage from "@/components/LandingPage";
 import { Metadata } from "next";
 import { Suspense } from "react";
 import Loading from "./loading";
+import ClientQueryProvider from "@/components/ClientQueryProvider";
 
 export const metadata: Metadata = {
   title: "Cheer With Me - Digital Greenboard For Celebration",
@@ -13,14 +14,15 @@ export const metadata: Metadata = {
       "Celebrate birthdays, festivals, and special moments with our interactive digital greenboard - just like the celebrations we loved in school!",
   },
 };
-
 export default function Home() {
   return (
     <>
       <main role="main">
-        <Suspense fallback={ <Loading></Loading>}>
-          <LandingPage />
-        </Suspense>
+  <ClientQueryProvider>
+          <Suspense fallback={<Loading></Loading>}>
+            <LandingPage />
+          </Suspense>
+  </ClientQueryProvider>
       </main>
       <script
         type="application/ld+json"
