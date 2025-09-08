@@ -103,6 +103,16 @@ img, video, svg, canvas {
 	-webkit-touch-callout: none !important;
 }
 
+/* Allow interaction for drawing canvases */
+canvas.allow-pointer,
+.allow-pointer canvas {
+	pointer-events: auto !important;
+}
+
+/* Hide scrollbars (keep scroll functional) */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
 /* Allow interaction for buttons and interactive elements */
 button, a, input, textarea, select, [role="button"], [tabindex] {
 	pointer-events: auto !important;
@@ -159,3 +169,16 @@ button, a, input, textarea, select, [role="button"], [tabindex] {
   background-position: center;
  
 }
+
+/* three-dot bounce animation used by LandingPage loading indicator */
+@keyframes bounce {
+	0%, 80%, 100% { transform: translateY(0); opacity: 0.9 }
+	40% { transform: translateY(-6px); opacity: 1 }
+}
+
+.dot-bounce {
+	animation-name: bounce;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: infinite;
+}
+

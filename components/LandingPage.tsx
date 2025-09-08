@@ -1,7 +1,8 @@
 "use client";
 import Celebrate from "@/components/Celebrate";
 import { useApiData } from "@/hooks/useApiData";
-import { useCallback, useEffect, useState } from "react";
+import Link from "next/link";
+import { useCallback, useState } from "react";
 
 export default function LandingPage() {
   // router not currently used
@@ -113,6 +114,9 @@ export default function LandingPage() {
     year: "numeric",
   });
 
+  // Prefer explicit greeting when available; otherwise show loading skeleton
+  const greeting = data?.quote ?? data?.data?.greet ?? null;
+
   return (
     <div className=" bg-[#084D4B]  vignette h-screen w-screen  ">
       {data?.data && assetsLoaded ? (
@@ -122,14 +126,27 @@ export default function LandingPage() {
           className="h-screen w-screen element flex flex-col items-center justify-center gap-4"
           aria-labelledby="welcome-heading"
         >
-          <h1 className="center text-white">{date}</h1>
+          <h1 className="center text-white text-sm sm:text-base md:text-lg font-semibold">{date}</h1>
           <header className="text-center mb-6">
             <h1
               id="welcome-heading"
-              className="text-3xl md:text-4xl text-white text-center mb-2"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white text-center mb-2 leading-tight font-extrabold"
               aria-label="Pranam Sir - Welcome greeting in Hindi"
+              aria-live="polite"
             >
-              &quot; {data?.quote ? data?.quote : data?.data.greet} &quot;
+              {greeting ? (
+                <>
+                  &quot; {greeting} &quot;
+                </>
+              ) : (
+                // three-dot loading animation (accessible)
+                <span className="flex items-center justify-center gap-2 mx-auto" aria-hidden="true">
+                  <span className="h-2 w-2 bg-white rounded-full dot-bounce" style={{ animationDuration: '1s', animationDelay: '0s' }} />
+                  <span className="h-2 w-2 bg-white rounded-full dot-bounce" style={{ animationDuration: '1s', animationDelay: '0.15s' }} />
+                  <span className="h-2 w-2 bg-white rounded-full dot-bounce" style={{ animationDuration: '1s', animationDelay: '0.3s' }} />
+                  <span className="sr-only">Loading</span>
+                </span>
+              )}
             </h1>
             {/* <p className="text-white/90 text-lg md:text-xl font-medium">
               Digital Greenboard Celebrations
@@ -139,7 +156,7 @@ export default function LandingPage() {
             <button
               onClick={handleClick}
               disabled={isLoading}
-              className={`doodle-btn ${
+              className={`doodle-btn text-sm sm:text-base md:text-lg ${
                 isLoading ? "opacity-50 cursor-not-allowed" : ""
               }`}
               aria-label="Start celebration with music and confetti - just like school days"
@@ -174,11 +191,17 @@ export default function LandingPage() {
               )}
             </button>
           )}
-          <div className="text-white/80 text-sm mt-6 text-center max-w-lg px-4">
-            <p className="mb-2 font-medium">
+          <Link
+            href="/draw"
+            className="text-white/85 underline mt-2 text-sm sm:text-base hover:text-white"
+          >
+            Show your creativity →
+          </Link>
+          <div className="text-white/80 text-sm sm:text-base md:text-lg mt-6 text-center max-w-lg px-4">
+            <p className="mb-2 font-medium text-sm sm:text-base md:text-lg">
               Celebrate everything the school way!
             </p>
-            <p className="text-xs leading-relaxed">
+            <p className="text-xs sm:text-sm md:text-base leading-relaxed">
               {/* Birthdays • Festivals • National Days • Achievements • Teacher
               Appreciation
               <br /> */}
