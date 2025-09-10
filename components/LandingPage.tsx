@@ -206,8 +206,7 @@ export default function LandingPage() {
               Appreciation
               <br /> */}
               <span className="text-white/60">
-                Just like the greenboard doodles and celebrations we loved in
-                school! 🎈
+                -JNV Kanker 7th Batch,2019🎈
               </span>
             </p>
           </div>
