@@ -1,8 +1,8 @@
-import Image from "next/image";
-import React, { useState, useEffect } from "react";
-import Confetti from "react-confetti";
-import GifPressOverlay from "./GifPressOverlay";
-import { type CelebrationConfig } from "@/lib/celebrations";
+import Image from 'next/image';
+import React, { useState, useEffect } from 'react';
+import Confetti from 'react-confetti';
+import GifPressOverlay from './GifPressOverlay';
+import { type CelebrationConfig } from '@/lib/celebrations';
 
 interface CelebrateProps {
   type?: string;
@@ -20,14 +20,14 @@ export default function Celebrate({ customConfig }: CelebrateProps) {
   };
 
   const confettiColors = [
-    "#FFD700",
-    "#FF6B6B",
-    "#4ECDC4",
-    "#45B7D1",
-    "#96CEB4",
-    "#FFEAA7",
-    "#DDA0DD",
-    "#98D8C8",
+    '#FFD700',
+    '#FF6B6B',
+    '#4ECDC4',
+    '#45B7D1',
+    '#96CEB4',
+    '#FFEAA7',
+    '#DDA0DD',
+    '#98D8C8',
   ];
 
   useEffect(() => {
@@ -39,23 +39,20 @@ export default function Celebrate({ customConfig }: CelebrateProps) {
     };
 
     detectSize();
-    window.addEventListener("resize", detectSize);
+    window.addEventListener('resize', detectSize);
 
     // Additional protection for images in this component
     const protectImages = () => {
-      const images = document.querySelectorAll("img");
+      const images = document.querySelectorAll('img');
       images.forEach((img) => {
-        img.setAttribute("draggable", "false");
-        img.setAttribute("ondragstart", "return false;");
-        img.setAttribute("oncontextmenu", "return false;");
-        img.style.userSelect = "none";
-        img.style.pointerEvents = "none";
-        (
-          img.style as CSSStyleDeclaration & { webkitUserDrag?: string }
-        ).webkitUserDrag = "none";
-        (
-          img.style as CSSStyleDeclaration & { webkitTouchCallout?: string }
-        ).webkitTouchCallout = "none";
+        img.setAttribute('draggable', 'false');
+        img.setAttribute('ondragstart', 'return false;');
+        img.setAttribute('oncontextmenu', 'return false;');
+        img.style.userSelect = 'none';
+        img.style.pointerEvents = 'none';
+        (img.style as CSSStyleDeclaration & { webkitUserDrag?: string }).webkitUserDrag = 'none';
+        (img.style as CSSStyleDeclaration & { webkitTouchCallout?: string }).webkitTouchCallout =
+          'none';
       });
     };
 
@@ -64,7 +61,7 @@ export default function Celebrate({ customConfig }: CelebrateProps) {
     const timer = setTimeout(protectImages, 100);
 
     return () => {
-      window.removeEventListener("resize", detectSize);
+      window.removeEventListener('resize', detectSize);
       clearTimeout(timer);
     };
   }, []);
@@ -89,7 +86,7 @@ export default function Celebrate({ customConfig }: CelebrateProps) {
         className="absolute top-0 left-0 hidden sm:block opacity-[50%] md:opacity-[80%] "
         aria-hidden="true"
       >
-        <Image src="/svgs/prop1.svg" alt="" width={300} height={300} priority  />
+        <Image src="/svgs/prop1.svg" alt="" width={300} height={300} priority />
       </div>
       <div
         className="absolute top-0 right-0 hidden sm:block opacity-[50%] md:opacity-[80%]"
@@ -97,10 +94,7 @@ export default function Celebrate({ customConfig }: CelebrateProps) {
       >
         <Image src="/svgs/prop2.svg" alt="" width={300} height={300} priority />
       </div>
-      <div
-        className="absolute top-[50%] left-[10%] sm:left-[30%]"
-        aria-hidden="true"
-      >
+      <div className="absolute top-[50%] left-[10%] sm:left-[30%]" aria-hidden="true">
         <Image
           src="/svgs/l-plane.svg"
           alt="Paper airplane decoration"
@@ -109,10 +103,7 @@ export default function Celebrate({ customConfig }: CelebrateProps) {
           className="sm:w-[100px]"
         />
       </div>
-      <div
-        className="absolute top-[30%] right-[10%] sm:right-[25%]"
-        aria-hidden="true"
-      >
+      <div className="absolute top-[30%] right-[10%] sm:right-[25%]" aria-hidden="true">
         <Image
           src="/svgs/r-plane.svg"
           alt="Paper airplane decoration"
@@ -149,10 +140,7 @@ export default function Celebrate({ customConfig }: CelebrateProps) {
           className="sm:w-[80px]"
         />
       </div>
-      <div
-        className="absolute top-[10%] sm:top-[5%] right-[22%]"
-        aria-hidden="true"
-      >
+      <div className="absolute top-[10%] sm:top-[5%] right-[22%]" aria-hidden="true">
         <Image
           src="/svgs/star2.svg"
           alt="Star decoration"
@@ -175,13 +163,7 @@ export default function Celebrate({ customConfig }: CelebrateProps) {
       {/* Main Content */}
       <article className="flex flex-col items-center justify-center font-bold text-4xl sm:text-6xl md:text-8xl text-white pt-30">
         <div className="absolute top-[20%] left-[25%]" aria-hidden="true">
-          <Image
-            src="/svgs/star1.svg"
-            alt=""
-            width={20}
-            height={20}
-            className="sm:w-[50px]"
-          />
+          <Image src="/svgs/star1.svg" alt="" width={20} height={20} className="sm:w-[50px]" />
         </div>
         <header>
           <h1 className="text-center">
@@ -203,7 +185,7 @@ export default function Celebrate({ customConfig }: CelebrateProps) {
         <div className="">
           {config.img ? (
             <Image
-              src={config.img || "/svgs/flower.svg"}
+              src={config.img || '/svgs/flower.svg'}
               alt="subject image"
               width={200}
               height={200}

@@ -1,6 +1,6 @@
-"use client";
-import React, { useState, useCallback, useEffect, PropsWithChildren } from "react";
-import Image from "next/image";
+'use client';
+import React, { useState, useCallback, useEffect, PropsWithChildren } from 'react';
+import Image from 'next/image';
 
 interface GifPressOverlayProps {
   gifSrc: string; // path under public
@@ -16,47 +16,55 @@ interface GifPressOverlayProps {
 export default function GifPressOverlay({
   children,
   gifSrc,
-  alt = "",
-  className = "",
-  overlayBgClassName = "bg-black/80",
+  alt = '',
+  className = '',
+  overlayBgClassName = 'bg-black/80',
 }: PropsWithChildren<GifPressOverlayProps>) {
   const [active, setActive] = useState(false);
 
   const end = useCallback(() => setActive(false), []);
 
-  const start = useCallback((e: React.PointerEvent | React.MouseEvent | React.TouchEvent) => {
-    // Only respond to primary button for mouse
-    // For simplicity allow all touches
-    // Prevent starting if already active
-    if (active) return;
-    if ("button" in e && (e as React.PointerEvent).button !== undefined && (e as React.PointerEvent).button !== 0) return;
-    setActive(true);
-  }, [active]);
+  const start = useCallback(
+    (e: React.PointerEvent | React.MouseEvent | React.TouchEvent) => {
+      // Only respond to primary button for mouse
+      // For simplicity allow all touches
+      // Prevent starting if already active
+      if (active) return;
+      if (
+        'button' in e &&
+        (e as React.PointerEvent).button !== undefined &&
+        (e as React.PointerEvent).button !== 0
+      )
+        return;
+      setActive(true);
+    },
+    [active]
+  );
 
   useEffect(() => {
     if (!active) return;
     const handleKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") end();
+      if (e.key === 'Escape') end();
     };
     const handleUp = () => end();
-    window.addEventListener("keyup", handleKey);
-    window.addEventListener("pointerup", handleUp);
-    window.addEventListener("touchend", handleUp);
-    window.addEventListener("mouseup", handleUp);
+    window.addEventListener('keyup', handleKey);
+    window.addEventListener('pointerup', handleUp);
+    window.addEventListener('touchend', handleUp);
+    window.addEventListener('mouseup', handleUp);
     return () => {
-      window.removeEventListener("keyup", handleKey);
-      window.removeEventListener("pointerup", handleUp);
-      window.removeEventListener("touchend", handleUp);
-      window.removeEventListener("mouseup", handleUp);
+      window.removeEventListener('keyup', handleKey);
+      window.removeEventListener('pointerup', handleUp);
+      window.removeEventListener('touchend', handleUp);
+      window.removeEventListener('mouseup', handleUp);
     };
   }, [active, end]);
 
   // Keyboard activation (Space / Enter) for accessibility
   const onKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === " " || e.key === "Enter") {
+    if (e.key === ' ' || e.key === 'Enter') {
       e.preventDefault();
       if (!active) setActive(true);
-    } else if (e.key === "Escape") {
+    } else if (e.key === 'Escape') {
       end();
     }
   };
@@ -89,7 +97,7 @@ export default function GifPressOverlay({
             fill
             priority
             unoptimized
-            style={{ objectFit: "contain" }}
+            style={{ objectFit: 'contain' }}
             sizes="100vw"
           />
           <span className="absolute bottom-4 text-white text-sm opacity-70 select-none pointer-events-none">

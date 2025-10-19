@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import React, { PropsWithChildren, useState } from "react";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import React, { PropsWithChildren, useState } from 'react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 export default function ClientQueryProvider({ children }: PropsWithChildren) {
   // create QueryClient on the client and keep it stable

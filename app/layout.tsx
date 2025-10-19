@@ -1,22 +1,23 @@
-import type { Metadata } from "next";
-import "./globals.css";
-import ClientQueryProvider from "@/components/ClientQueryProvider";
+import type { Metadata } from 'next';
+import './globals.css';
+import ClientQueryProvider from '@/components/ClientQueryProvider';
 import { Cabin_Sketch } from 'next/font/google';
 
-
 const cabinSketch = Cabin_Sketch({
-  weight: ['700'],  
+  weight: ['700'],
   subsets: ['latin'],
   display: 'swap',
 });
 
 export const metadata: Metadata = {
-  title: "Cheer With Me - Digital Greenboard for All Celebrations | School Spirit",
-  description: "Celebrate everything the school way! Birthdays, festivals, achievements, and special moments with interactive digital greenboard celebrations. Relive the joy of school celebrations with confetti, music, and heartfelt messages.",
-  keywords: "school celebrations, birthday celebration, festival wishes, digital greenboard, school memories, interactive celebration, student birthdays, teacher appreciation, national festivals, school spirit, doodle celebrations",
-  authors: [{ name: "Cheer With Me" }],
-  creator: "Cheer With Me",
-  publisher: "Cheer With Me",
+  title: 'Cheer With Me - Digital Greenboard for All Celebrations | School Spirit',
+  description:
+    'Celebrate everything the school way! Birthdays, festivals, achievements, and special moments with interactive digital greenboard celebrations. Relive the joy of school celebrations with confetti, music, and heartfelt messages.',
+  keywords:
+    'school celebrations, birthday celebration, festival wishes, digital greenboard, school memories, interactive celebration, student birthdays, teacher appreciation, national festivals, school spirit, doodle celebrations',
+  authors: [{ name: 'Cheer With Me' }],
+  creator: 'Cheer With Me',
+  publisher: 'Cheer With Me',
   formatDetection: {
     email: false,
     address: false,
@@ -27,8 +28,9 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: "Cheer With Me - Digital Greenboard for All Celebrations",
-    description: "Celebrate everything the school way! Birthdays, festivals, achievements with interactive digital greenboard celebrations just like we used to do in school.",
+    title: 'Cheer With Me - Digital Greenboard for All Celebrations',
+    description:
+      'Celebrate everything the school way! Birthdays, festivals, achievements with interactive digital greenboard celebrations just like we used to do in school.',
     url: 'https://cheerwith.me',
     siteName: 'Cheer With Me',
     images: [
@@ -44,8 +46,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Cheer With Me - Digital Greenboard Celebrations",
-    description: "Celebrate everything the school way! Interactive digital celebrations for birthdays, festivals, and special moments.",
+    title: 'Cheer With Me - Digital Greenboard Celebrations',
+    description:
+      'Celebrate everything the school way! Interactive digital celebrations for birthdays, festivals, and special moments.',
     images: ['/images/logo.png'],
     creator: '@cheerwithme',
   },
@@ -88,30 +91,29 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebSite",
-              "name": "Cheer With Me",
-              "description": "Digital greenboard celebration platform for all occasions - birthdays, festivals, achievements, and special moments",
-              "url": "https://cheerwith.me",
-              "applicationCategory": "Entertainment",
-              "audience": {
-                "@type": "Audience",
-                "audienceType": "Students, Teachers, Educational Community"
+              '@context': 'https://schema.org',
+              '@type': 'WebSite',
+              name: 'Cheer With Me',
+              description:
+                'Digital greenboard celebration platform for all occasions - birthdays, festivals, achievements, and special moments',
+              url: 'https://cheerwith.me',
+              applicationCategory: 'Entertainment',
+              audience: {
+                '@type': 'Audience',
+                audienceType: 'Students, Teachers, Educational Community',
               },
-              "potentialAction": {
-                "@type": "SearchAction",
-                "target": "https://cheerwith.me/?q={search_term_string}",
-                "query-input": "required name=search_term_string"
-              }
-            })
+              potentialAction: {
+                '@type': 'SearchAction',
+                target: 'https://cheerwith.me/?q={search_term_string}',
+                'query-input': 'required name=search_term_string',
+              },
+            }),
           }}
         />
       </head>
       <body className={cabinSketch.className}>
-        
-  {/* <ContentProtection /> */}
-  <ClientQueryProvider>{children}</ClientQueryProvider>
-        
+        {/* <ContentProtection /> */}
+        <ClientQueryProvider>{children}</ClientQueryProvider>
       </body>
     </html>
   );

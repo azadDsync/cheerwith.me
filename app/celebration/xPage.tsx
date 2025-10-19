@@ -35,7 +35,7 @@
 //       try {
 //         const sound = data?.data?.celebrationSound;
 //         const music = data?.data?.backgroundMusic;
-        
+
 //         if (sound) {
 //           await playAudio(sound, false);
 //         }

@@ -7,6 +7,9 @@
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint",
+    "format:prettier": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md,html}\"",
+    "format:eslint": "eslint --fix . --ext .js,.jsx,.ts,.tsx",
+    "format": "npm run format:prettier && npm run format:eslint",
     "analyze": "ANALYZE=true npm run build",
     "lighthouse": "npx lighthouse http://localhost:3000 --output=html --output-path=./lighthouse-report.html",
     "check-bundle": "npx @next/bundle-analyzer",
@@ -30,6 +33,8 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.5.2",
+    "prettier": "^3.6.2",
+    "sitemap-generator-cli": "^7.5.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

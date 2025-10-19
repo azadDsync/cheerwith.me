@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import { useEffect } from 'react';
 
 export default function ContentProtection() {
@@ -93,9 +93,9 @@ export default function ContentProtection() {
     // Disable image saving on mobile (long press)
     const disableLongPress = (e: TouchEvent) => {
       if (e.touches.length > 1) return; // Allow multi-touch gestures
-      
+
       let timer: NodeJS.Timeout;
-      
+
       const startTimer = () => {
         timer = setTimeout(() => {
           e.preventDefault();
@@ -107,7 +107,7 @@ export default function ContentProtection() {
       };
 
       startTimer();
-      
+
       document.addEventListener('touchend', clearTimer, { once: true });
       document.addEventListener('touchmove', clearTimer, { once: true });
     };
@@ -115,7 +115,7 @@ export default function ContentProtection() {
     // Detect developer tools (basic detection)
     const detectDevTools = () => {
       const threshold = 160;
-      
+
       setInterval(() => {
         if (
           window.outerHeight - window.innerHeight > threshold ||
@@ -124,7 +124,10 @@ export default function ContentProtection() {
           // Developer tools might be open
           console.clear();
           console.log('%cStop!', 'color: red; font-size: 50px; font-weight: bold;');
-          console.log('%cThis is a browser feature intended for developers. Content is protected.', 'color: red; font-size: 16px;');
+          console.log(
+            '%cThis is a browser feature intended for developers. Content is protected.',
+            'color: red; font-size: 16px;'
+          );
         }
       }, 1000);
     };
@@ -138,12 +141,13 @@ export default function ContentProtection() {
 
     // Disable image dragging specifically
     const images = document.querySelectorAll('img');
-    images.forEach(img => {
+    images.forEach((img) => {
       img.addEventListener('dragstart', disableDragDrop);
       img.style.userSelect = 'none';
       (img.style as CSSStyleDeclaration & { webkitUserSelect?: string }).webkitUserSelect = 'none';
       img.style.pointerEvents = 'none';
-      (img.style as CSSStyleDeclaration & { webkitTouchCallout?: string }).webkitTouchCallout = 'none';
+      (img.style as CSSStyleDeclaration & { webkitTouchCallout?: string }).webkitTouchCallout =
+        'none';
     });
 
     // Apply CSS to prevent selection and dragging
@@ -197,7 +201,7 @@ export default function ContentProtection() {
       document.removeEventListener('dragstart', disableDragDrop);
       document.removeEventListener('keydown', disableKeyboardShortcuts);
       document.removeEventListener('touchstart', disableLongPress);
-      
+
       if (style.parentNode) {
         style.parentNode.removeChild(style);
       }

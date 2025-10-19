@@ -13,11 +13,7 @@ export default function Error({
         <p className="mb-6 text-white/80">
           We apologize for the inconvenience. The celebration encountered an error.
         </p>
-        <button
-          onClick={reset}
-          className="doodle-btn"
-          aria-label="Try celebrating again"
-        >
+        <button onClick={reset} className="doodle-btn" aria-label="Try celebrating again">
           Try Again
         </button>
       </div>

@@ -9,8 +9,8 @@ export default function NotFound() {
         <p className="mb-6 text-white/80">
           The celebration you&apos;re looking for doesn&apos;t exist.
         </p>
-        <Link 
-          href="/" 
+        <Link
+          href="/"
           className="doodle-btn inline-block"
           aria-label="Return to Teachers Day celebration home"
         >

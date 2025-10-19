@@ -27,37 +27,49 @@ Remember those beautiful moments in school when we used to decorate the greenboa
 ## 🎨 Celebration Types
 
 ### 👨‍🏫 Teachers Day
-*"You made learning an art—thank you for nurturing creativity in us"*
+
+_"You made learning an art—thank you for nurturing creativity in us"_
+
 - Special tribute to educators
 - Academic-themed decorations
 - Traditional school colors
 
 ### 🎂 Birthday Celebrations
-*"Another year of awesome!"*
+
+_"Another year of awesome!"_
+
 - Personalized birthday wishes
 - Cake and balloon themed animations
 - Bright, cheerful colors
 
 ### 🪔 Festival Celebrations
-*"Celebrating traditions together"*
+
+_"Celebrating traditions together"_
+
 - Cultural festival themes
 - Traditional color palettes
 - Festival-specific decorations
 
 ### 🇮🇳 National Day Tributes
-*"Proud to be Indian"*
+
+_"Proud to be Indian"_
+
 - Patriotic themes and colors
 - National symbols and pride
 - Unity and heritage celebration
 
 ### 🏆 Achievement Recognition
-*"Excellence achieved!"*
+
+_"Excellence achieved!"_
+
 - Victory and success themes
 - Gold and champion colors
 - Motivational messages
 
 ### 🎊 General Celebrations
-*"Every moment deserves joy"*
+
+_"Every moment deserves joy"_
+
 - Universal celebration themes
 - Rainbow colors and confetti
 - Adaptable for any occasion
@@ -65,18 +77,21 @@ Remember those beautiful moments in school when we used to decorate the greenboa
 ## 🎯 SEO & Performance Optimizations Implemented
 
 ### 1. **Enhanced SEO Metadata**
+
 - Comprehensive meta tags (title, description, keywords)
 - Open Graph and Twitter Card meta tags
 - Structured data (JSON-LD) for events and website
 - Canonical URLs and meta robots configuration
 
 ### 2. **Technical SEO**
+
 - `sitemap.xml` for search engine indexing
 - `robots.txt` for crawler guidance
 - PWA manifest for mobile app-like experience
 - Semantic HTML structure with proper heading hierarchy
 
 ### 3. **Performance Optimizations**
+
 - Image optimization with WebP/AVIF formats
 - Asset caching with proper Cache-Control headers
 - Bundle optimization with package imports
@@ -84,6 +99,7 @@ Remember those beautiful moments in school when we used to decorate the greenboa
 - CSS optimizations with reduced motion support
 
 ### 4. **Accessibility Improvements**
+
 - ARIA labels and roles for screen readers
 - Keyboard navigation support
 - Focus management for interactive elements
@@ -91,6 +107,7 @@ Remember those beautiful moments in school when we used to decorate the greenboa
 - Color contrast compliance
 
 ### 5. **Core Web Vitals**
+
 - Optimized First Contentful Paint (FCP)
 - Improved Largest Contentful Paint (LCP)
 - Minimized Cumulative Layout Shift (CLS)
@@ -99,14 +116,16 @@ Remember those beautiful moments in school when we used to decorate the greenboa
 ## 🎓 Educational Context & School Spirit
 
 This application captures the essence of school celebrations where:
+
 - Teachers and students came together to celebrate special days
 - Greenboards were decorated with colorful chalk art and doodles
 - Every birthday, festival, and achievement was honored with community joy
 - Simple moments became memorable through collective celebration
 
 ### Perfect for:
+
 - **Schools & Educational Institutions** - Digital bulletin boards
-- **Teachers** - Classroom celebrations and student recognition  
+- **Teachers** - Classroom celebrations and student recognition
 - **Students** - Peer birthday wishes and festival greetings
 - **Alumni** - Nostalgic celebration of school memories
 - **Families** - Bringing school-style celebrations home
@@ -123,8 +142,9 @@ This application captures the essence of school celebrations where:
 ## 🎨 Design Philosophy
 
 Inspired by the beautiful chaos of school greenboards:
+
 - **Doodle-style buttons** that feel hand-drawn
-- **Playful animations** like confetti and floating elements  
+- **Playful animations** like confetti and floating elements
 - **Bright, cheerful colors** reminiscent of chalk art
 - **Handwritten-style fonts** for authentic school feel
 - **Interactive elements** that respond to touch and clicks
@@ -132,6 +152,7 @@ Inspired by the beautiful chaos of school greenboards:
 ## 📊 Performance Metrics
 
 The application is optimized for:
+
 - **First Load JS**: 129 kB (optimized)
 - **Static Generation**: All pages pre-rendered
 - **Image Optimization**: WebP/AVIF support
@@ -160,10 +181,12 @@ Made with ❤️ for celebrating the wonderful teachers who shape our lives.
 ## Quick Start
 
 Prerequisites
+
 - Node.js 18+ (or as required by your environment)
 - npm or bun (project contains bun.lock if using bun)
 
 Install dependencies
+
 ```sh
 npm install
 # or
@@ -171,6 +194,7 @@ npm install
 ```
 
 Run development server
+
 ```sh
 npm run dev
 # or
@@ -178,21 +202,25 @@ npm run dev
 ```
 
 Build and start
+
 ```sh
 npm run build
 npm run start
 ```
 
 ## Project Structure (relevant)
+
 - `app/layout.tsx` — Root layout + global metadata (font + global CSS) — see [app/layout.tsx](app/layout.tsx)
 - `app/page.tsx` — Home page (client/server component)
 - `app/globals.css` — Global styles
 
 ## Notes
+
 - The root layout applies the Cabin Sketch font via next/font. Adjust weights/subsets in [app/layout.tsx](app/layout.tsx) as needed.
 - Metadata (title, description) is exported from `app/layout.tsx` and used by Next for basic SEO.
 
 ## Contributing
+
 1. Create a branch.
 2. Make changes and add tests where applicable.
 3. Open a PR with a clear description.

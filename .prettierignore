@@ -1,0 +1,17 @@
+node_modules
+.next
+.build
+dist
+public
+bun.lock
+package-lock.json
+.pnp.*
+.vscode
+coverage
+.DS_Store
+
+# Ignore build outputs
+.next/**
+
+# Ignore static assets
+public/**
